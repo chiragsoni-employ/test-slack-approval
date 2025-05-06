@@ -1,0 +1,26 @@
+name: create_ecr_repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel_id:
+        required: true
+        type: string
+        default: "C08R4TBBX7U"
+
+jobs:
+  approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send approval
+        uses: Precise-Finance/slack-approval@v1
+        env:
+          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+          SLACK_CHANNEL_ID: ${{ github.event.inputs.channel_id }}
+        timeout-minutes: 10
+    
+      - name: work
+        run: |
+          echo "Approval received, continuing with the workflow"
