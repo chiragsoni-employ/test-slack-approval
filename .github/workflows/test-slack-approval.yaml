@@ -21,7 +21,7 @@ jobs:
           payload: |
             channel: ${{ github.event.inputs.channel_id }}
             text: |+
-              Hi its bot
+              :rocket: *Deployment Initiated!* :rocket:
 
       - name: send approval
         uses: TigerWest/slack-approval@v1.0.1
