@@ -20,6 +20,15 @@ jobs:
           SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
           SLACK_CHANNEL_ID: ${{ github.event.inputs.channel_id }}
         timeout-minutes: 10
+        with:
+            approvers: U08QR864Z3L
+            minimumApprovalCount: 1
+            baseMessagePayload: |
+              {}
+            successMessagePayload: |
+              {}
+            failMessagePayload: |
+              {}
     
       - name: work
         run: |
