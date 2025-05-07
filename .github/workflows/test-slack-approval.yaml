@@ -23,7 +23,7 @@ jobs:
         with:
             approvers: U08QR864Z3L
             minimumApprovalCount: 1
-            baseMessageTs: 1746608722.658789
+            baseMessageTs: "1746608722.658789"
             baseMessagePayload: |
               {}
             successMessagePayload: |
