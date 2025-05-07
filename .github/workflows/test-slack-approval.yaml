@@ -12,6 +12,17 @@ jobs:
   approval:
     runs-on: ubuntu-latest
     steps:
+      - name: Send Slack message
+        id: deployment_message
+        uses: slackapi/slack-github-action@v2
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ github.event.inputs.channel_id }}
+            text: |+
+              Hi its bot
+
       - name: send approval
         uses: TigerWest/slack-approval@v1.0.1
         env:
@@ -23,7 +34,7 @@ jobs:
         with:
             approvers: U08QR864Z3L
             minimumApprovalCount: 1
-            baseMessageTs: "1746608722.658789"
+            baseMessageTs: "${{ steps.deployment_message.outputs.ts }}"
             baseMessagePayload: |
               {}
             successMessagePayload: |
