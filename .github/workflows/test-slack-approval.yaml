@@ -19,7 +19,7 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: "${{ github.event.inputs.channel_id }}"
+            channel: ${{ github.event.inputs.channel_id }}
             text: "Slack approval workflow initiated."
 
       - name: send approval
