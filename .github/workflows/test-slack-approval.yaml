@@ -23,7 +23,7 @@ jobs:
             text: "Slack approval workflow initiated."
       
       - name: send approval
-        uses: TigerWest/slack-approval@v1.0.1
+        uses: chiragsoni-employ/slack-approval@v1.0.0
         env:
           SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
