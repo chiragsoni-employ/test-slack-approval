@@ -16,11 +16,11 @@ jobs:
         id: send-message
         uses: slackapi/slack-github-action@v2.1.0
         with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: "${{ github.event.inputs.channel_id }}"
             text: "Slack approval workflow initiated."
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: send approval
         uses: TigerWest/slack-approval@v1.0.1
