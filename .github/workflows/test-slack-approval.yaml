@@ -3,6 +3,10 @@ name: Run Slack Approval Test
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        required: true
+        type: string
+        default: "stg2"
       channel_id:
         required: true
         type: string
@@ -35,7 +39,7 @@ jobs:
             minimumApprovalCount: 1
             baseMessageTs: "${{ steps.send-message.outputs.ts }}"
             baseMessagePayload: |
-              {}
+              {"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Need approval for ${{ github.event.inputs.environment }}!"}}]}
             successMessagePayload: |
               {}
             failMessagePayload: |
