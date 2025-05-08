@@ -14,13 +14,11 @@ jobs:
     steps:
       - name: Send base message to Slack
         id: send-message
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v2.1.0
         with:
           payload: |
-            {
-              "channel": "${{ github.event.inputs.channel_id }}",
-              "text": "Slack approval workflow initiated."
-            }
+            channel: "${{ github.event.inputs.channel_id }}"
+            text: "Slack approval workflow initiated."
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
